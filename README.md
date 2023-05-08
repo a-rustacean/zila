@@ -31,11 +31,11 @@ certian events. It propvides both syncronuos and asyncronuos functions
 to make writing Rust code esier. At a high level, it provides a few major
 functions:
 
-* (duration_to_next_hour)[duration]
-* (call_every_hour)[every]
-* (call_every_hour_mut)[every_mut]
-* (call_every_hour_async)[every_async]
-* (call_every_hour_async_mut)[every_async_mut]
+* [duration_to_next_hour][duration]
+* [call_every_hour][every]
+* [call_every_hour_mut][every_mut]
+* [call_every_hour_async][every_async]
+* [call_every_hour_async_mut][every_async_mut]
 
 [duration]: https://docs.rs/zila/0.1.2/fn.duration_to_next_hour.html
 [every]: https://docs.rs/zila/0.1.2/fn.call_every_hour.html
