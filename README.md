@@ -56,10 +56,10 @@ zila = { version = "0.1.2", features = ["second"] }
 Then, on your main.rs:
 
 ```rust,no_run
-use zila::call_every_hour;
+use zila::call_every_second;
 
 fn main() {
-    call_every_hour(|| {
+    call_every_second(|| {
         println!("Hi");
     })
 }
