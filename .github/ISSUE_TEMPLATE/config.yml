@@ -1,0 +1,4 @@
+contact_links:
+  - name: Question
+    url: https://github.com/a-rustacean/zila/discussions
+    about: Questions about zila should be posted as a GitHub discussion.

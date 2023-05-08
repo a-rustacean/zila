@@ -1,0 +1,20 @@
+[package]
+name = "zila"
+version = "0.1.2"
+description = "zila"
+license-file = "LICENSE"
+documentation = "https://docs.rs/zila/latest/zila"
+repository = "https://github.com/a-rustacean/zila"
+authors = ["Dilshad <dilshadplayingminecraft@outlook.com>"]
+edition = "2021"
+
+[dependencies]
+chrono = "0.4.24"
+tokio = { version = "1.28.0", features = ["time"] }
+
+[features]
+day = []
+hour = []
+minute = []
+second = []
+default = ["day", "hour", "minute", "second"]
