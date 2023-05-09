@@ -16,7 +16,7 @@
 //! enabling the `full` feature flag:
 //!
 //! ```toml
-//! zila = { version = "0.1.6", features = ["full"] }
+//! zila = { version = "0.1.7", features = ["full"] }
 //! ```
 //!
 //! ### Authoring applications
@@ -33,17 +33,13 @@
 //! Make sure you activated the `second` featureof the zill crate on Cargo.toml
 //!
 //! ```toml
-//! zila = { version = "0.1.6", features = ["second"] }
+//! zila = { version = "0.1.7", features = ["second"] }
 //! ```
 //! on your main.rs:
 //! ```rust
-//! use zila::call_every_second;
-//!
-//! fn main() {
-//!     call_every_second(|| {
-//!         println!("Hi");
-//!     })
-//! }
+//! call_every_second(|| {
+//!     println!("Hi");
+//! });
 //! ```
 //!
 //! More examples can be found [here](https://github.com/a-rustacean/zila/tree/master/examples)
@@ -54,7 +50,7 @@ use tokio::time::{sleep, Duration};
 
 /// Returns the duration to next day (00:00:00.000.000.000)
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// use zila::duration_to_next_day;
@@ -93,7 +89,7 @@ pub fn duration_to_next_day() -> Duration {
 
 /// Returns the duration to next hour (\_\_:00:00.000.000.000)
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// use zila::duration_to_next_hour;
@@ -128,7 +124,7 @@ pub fn duration_to_next_hour() -> Duration {
 
 /// Returns the duration to next minute (\_\_:\_\_:00.000.000.000)
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// use zila::duration_to_next_minute;
@@ -162,7 +158,7 @@ pub fn duration_to_next_minute() -> Duration {
 
 /// Returns the duration to next second (\_\_:\_\_:\_\_.000.000.000)
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// use zila::duration_to_next_second;
@@ -192,7 +188,7 @@ pub fn duration_to_next_second() -> Duration {
 
 /// calls the given function every day
 ///
-/// ## Example
+/// # Example
 ///
 /// using a closure:
 ///
@@ -227,7 +223,7 @@ where
 
 /// calls the given function every day, takes a `FnMut` as the argument
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// let num = Rc::new(Cell::new(0));
@@ -254,7 +250,7 @@ where
 
 /// calls the given async function every day
 ///
-/// ## Example
+/// # Example
 ///
 /// using a closure:
 ///
@@ -291,7 +287,7 @@ where
 
 /// calls the given async function every day, takes a `FnMut` as the argument
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// let num = Rc::new(Cell::new(0));
@@ -320,7 +316,7 @@ where
 
 /// calls the given function every hour
 ///
-/// ## Example
+/// # Example
 ///
 /// using a closure:
 ///
@@ -355,7 +351,7 @@ where
 
 /// calls the given function every hour, takes a `FnMut` as the argument
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// let num = Rc::new(Cell::new(0));
@@ -382,7 +378,7 @@ where
 
 /// calls the given async function every hour
 ///
-/// ## Example
+/// # Example
 ///
 /// using a closure:
 ///
@@ -419,7 +415,7 @@ where
 
 /// calls the given async function every hour, takes a `FnMut` as the argument
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// let num = Rc::new(Cell::new(0));
@@ -448,7 +444,7 @@ where
 
 /// calls the given function every minute
 ///
-/// ## Example
+/// # Example
 ///
 /// using a closure:
 ///
@@ -483,7 +479,7 @@ where
 
 /// calls the given function every minute, takes a `FnMut` as the argument
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// let num = Rc::new(Cell::new(0));
@@ -510,7 +506,7 @@ where
 
 /// calls the given async function every minute
 ///
-/// ## Example
+/// # Example
 ///
 /// using a closure:
 ///
@@ -547,7 +543,7 @@ where
 
 /// calls the given async function every minute, takes a `FnMut` as the argument
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// let num = Rc::new(Cell::new(0));
@@ -576,7 +572,7 @@ where
 
 /// calls the given function every second
 ///
-/// ## Example
+/// # Example
 ///
 /// using a closure:
 ///
@@ -611,7 +607,7 @@ where
 
 /// calls the given function every second, takes a `FnMut` as the argument
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// let num = Rc::new(Cell::new(0));
@@ -638,7 +634,7 @@ where
 
 /// calls the given async function every second
 ///
-/// ## Example
+/// # Example
 ///
 /// using a closure:
 ///
@@ -675,7 +671,7 @@ where
 
 /// calls the given async function every second, takes a `FnMut` as the argument
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// let num = Rc::new(Cell::new(0));
@@ -704,7 +700,7 @@ where
 
 /// calls the function after the specified duration
 ///
-/// ## Example
+/// # Example
 ///
 /// using function:
 ///
@@ -736,7 +732,7 @@ where
 
 /// calls the function after the specified duration, takes `FnMut` as the first argument
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// let num = Rc::new(Cell::new(0));
@@ -760,7 +756,7 @@ where
 
 /// calls the async function after the specified duration
 ///
-/// ## Example
+/// # Example
 ///
 /// using function:
 ///
@@ -794,7 +790,7 @@ where
 
 /// calls the async function after the specified duration, takes `FnMut` as the first argument
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// let num = Rc::new(Cell::new(0));
@@ -820,7 +816,7 @@ where
 
 /// calls the function in the specified intervals
 ///
-/// ## Example
+/// # Example
 ///
 /// using function:
 ///
@@ -853,7 +849,7 @@ where
 
 /// calls the function in the specified intervals, takes `FnMut` as the first argument
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// let num = Rc::new(Cell::new(0));
@@ -879,7 +875,7 @@ where
 
 /// calls the async function in the specified intervals
 ///
-/// ## Example
+/// # Example
 ///
 /// using function:
 ///
@@ -914,7 +910,7 @@ where
 
 /// calls the async function in the specified intervals, takes `FnMut` as the first argument
 ///
-/// ## Example
+/// # Example
 ///
 /// ```rust
 /// let num = Rc::new(Cell::new(0));
