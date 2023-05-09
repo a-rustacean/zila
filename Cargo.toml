@@ -1,6 +1,6 @@
 [package]
 name = "zila"
-version = "0.1.6"
+version = "0.1.7"
 description = "A library for calling functions on certain events"
 license = "MIT"
 documentation = "https://docs.rs/zila/0.1.7"
