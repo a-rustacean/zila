@@ -1,9 +1,10 @@
 [package]
 name = "zila"
-version = "0.1.4"
-description = "zila"
+version = "0.1.5"
+description = "A library for calling functions on certain events"
 license-file = "LICENSE"
-documentation = "https://docs.rs/zila/latest/zila"
+license = "MIT"
+documentation = "https://docs.rs/zila/0.1.5"
 repository = "https://github.com/a-rustacean/zila"
 authors = ["Dilshad <dilshadplayingminecraft@outlook.com>"]
 edition = "2021"
@@ -17,4 +18,5 @@ day = []
 hour = []
 minute = []
 second = []
-default = ["day", "hour", "minute", "second"]
+timeout = []
+interval = []

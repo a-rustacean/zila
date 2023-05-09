@@ -3,8 +3,8 @@
 A library for calling function on certain events with
 the Rust programming language. It is:
 
-* **Fast**: Zila uses tokio and Chrono under the hood thats
-  make it very fast
+* **Fast**: Zila uses tokio and Chrono under the hood that
+  makes it very fast
 
 * **Reliable**: Zila leverages Rust's ownership, type system, and
   concurrency model to reduce bugs and ensure thread safety.
@@ -27,7 +27,7 @@ the Rust programming language. It is:
 ## Overview
 
 Zila is a fast and reliable library for performing tasks on
-certian events. It propvides both syncronuos and asyncronuos functions
+certian events. It propvides both synchronous and asynchronous functions
 to make writing Rust code esier. At a high level, it provides a few major
 functions:
 
@@ -36,12 +36,16 @@ functions:
 * [call_every_hour_mut][every_mut]
 * [call_every_hour_async][every_async]
 * [call_every_hour_async_mut][every_async_mut]
+* [set_timeout]
+* [set_interval]
 
-[duration]: https://docs.rs/zila/0.1.2/fn.duration_to_next_hour.html
-[every]: https://docs.rs/zila/0.1.2/fn.call_every_hour.html
-[every_mut]: https://docs.rs/zila/0.1.2/fn.call_every_hour_mut.html
-[every_async]: https://docs.rs/zila/0.1.2/fn.call_every_hour_async.html
-[every_async_mut]: https://docs.rs/zila/0.1.2/fn.call_every_hour_async_mut.html
+[duration]: https://docs.rs/zila/0.1.5/fn.duration_to_next_hour.html
+[every]: https://docs.rs/zila/0.1.5/fn.call_every_hour.html
+[every_mut]: https://docs.rs/zila/0.1.5/fn.call_every_hour_mut.html
+[every_async]: https://docs.rs/zila/0.1.5/fn.call_every_hour_async.html
+[every_async_mut]: https://docs.rs/zila/0.1.5/fn.call_every_hour_async_mut.html
+[set_timeout]: https://docs.rs/zila/0.1.5/fn.set_timeout.html
+[set_interval]: https://docs.rs/zila/0.1.5/fn.set_interval.html
 
 ## Example
 
@@ -51,7 +55,7 @@ Make sure you activated the `second` features of the zila crate on Cargo.toml:
 
 ```toml
 [dependencies]
-zila = { version = "0.1.2", features = ["second"] }
+zila = { version = "0.1.5", features = ["second"] }
 ```
 Then, on your main.rs:
 
