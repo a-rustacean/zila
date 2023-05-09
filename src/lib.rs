@@ -16,7 +16,7 @@
 //! enabling the `full` feature flag:
 //!
 //! ```toml
-//! zila = { version = "0.1.7", features = ["full"] }
+//! zila = { version = "0.1.8", features = ["full"] }
 //! ```
 //!
 //! ### Authoring applications
@@ -33,13 +33,17 @@
 //! Make sure you activated the `second` featureof the zill crate on Cargo.toml
 //!
 //! ```toml
-//! zila = { version = "0.1.7", features = ["second"] }
+//! zila = { version = "0.1.8", features = ["second"] }
 //! ```
 //! on your main.rs:
 //! ```rust
-//! call_every_second(|| {
-//!     println!("Hi");
-//! });
+//! use zila::call_every_second;
+//!
+//! fn main() {
+//!     call_every_second(|| {
+//!         println!("Hi");
+//!     });
+//! }
 //! ```
 //!
 //! More examples can be found [here](https://github.com/a-rustacean/zila/tree/master/examples)
@@ -54,16 +58,12 @@ use tokio::time::{sleep, Duration};
 ///
 /// ```rust
 /// use zila::duration_to_next_day;
-/// use tokio::time::sleep;
 /// use chrono::{Local, TimeLike};
 ///
-/// #[tokio::main]
-/// async fn main() {
-///     let duration = duration_to_next_day();
-///     sleep(duration).await;
-///     let time = Local::new().time();
-///     println!("{}h {}m {}s", time.hour(), time.minute(), time.second()); // 0h 0m 0s
-/// }
+/// let duration = duration_to_next_day();
+/// std::thread::sleep(duration);
+/// let time = Local::new().time();
+/// println!("{}h {}m {}s", time.hour(), time.minute(), time.second()); // 0h 0m 0s
 /// ```
 ///
 /// *This function requires the following crate features to be activated: `day`*
@@ -93,16 +93,12 @@ pub fn duration_to_next_day() -> Duration {
 ///
 /// ```rust
 /// use zila::duration_to_next_hour;
-/// use tokio::time::sleep;
 /// use chrono::{Local, TimeLike};
 ///
-/// #[tokio::main]
-/// async fn main() {
-///     let duration = duration_to_next_hour();
-///     sleep(duration).await;
-///     let time = Local::new().time();
-///     println!("{}m {}s", time.minute(), time.second()); // 0m 0s
-/// }
+/// let duration = duration_to_next_hour();
+/// std::thred::sleep(duration).await;
+/// let time = Local::new().time();
+/// println!("{}m {}s", time.minute(), time.second()); // 0m 0s
 /// ```
 ///
 /// *This function requires the following crate features to be activated: `hour`*
@@ -128,16 +124,12 @@ pub fn duration_to_next_hour() -> Duration {
 ///
 /// ```rust
 /// use zila::duration_to_next_minute;
-/// use tokio::time::sleep;
 /// use chrono::{Local, TimeLike};
 ///
-/// #[tokio::main]
-/// async fn main() {
-///     let duration = duration_to_next_minute();
-///     sleep(duration).await;
-///     let time = Local::new().time();
-///     println!("{}s", time.second()); // 0s
-/// }
+/// let duration = duration_to_next_minute();
+/// sleep(duration).await;
+/// let time = Local::new().time();
+/// println!("{}s", time.second()); // 0s
 /// ```
 ///
 /// *This function requires the following crate features to be activated: `minute`*
@@ -162,16 +154,12 @@ pub fn duration_to_next_minute() -> Duration {
 ///
 /// ```rust
 /// use zila::duration_to_next_second;
-/// use tokio::time::sleep;
 /// use chrono::{Local, TimeLike};
 ///
-/// #[tokio::main]
-/// async fn main() {
-///     let duration = duration_to_next_second();
-///     sleep(duration).await;
-///     let time = Local::new();
-///     println!("{}ms", time.timestamp_subsec_millis()); // 0ms
-/// }
+/// let duration = duration_to_next_second();
+/// sleep(duration).await;
+/// let time = Local::new();
+/// println!("{}ms", time.timestamp_subsec_millis()); // 0ms
 /// ```
 ///
 /// *This function requires the following crate features to be activated: `second`*
@@ -193,6 +181,8 @@ pub fn duration_to_next_second() -> Duration {
 /// using a closure:
 ///
 /// ```rust
+/// use zila::call_every_day;
+///
 /// call_every_day(|| {
 ///     println!("Hi");
 /// });
@@ -201,6 +191,8 @@ pub fn duration_to_next_second() -> Duration {
 /// using a function:
 ///
 /// ```rust
+/// use zila::call_every_day;
+///
 /// fn callback() {
 ///     println!("Hi");
 /// }
@@ -226,8 +218,10 @@ where
 /// # Example
 ///
 /// ```rust
+/// use zila::call_every_day_mut;
+///
 /// let num = Rc::new(Cell::new(0));
-/// call_every_day({
+/// call_every_day_mut({
 ///     let num = num.clone();
 ///     move || {
 ///         num.set(num.get() + 1);
@@ -255,6 +249,8 @@ where
 /// using a closure:
 ///
 /// ```rust
+/// use zila::call_every_day_async;
+///
 /// // async closures are unstable
 /// call_every_day_async(async || {
 ///     println!("Hi");
@@ -264,6 +260,8 @@ where
 /// using a function:
 ///
 /// ```rust
+/// use zila::call_every_day_async;
+///
 /// async fn callback() {
 ///     println!("Hi");
 /// }
@@ -290,14 +288,16 @@ where
 /// # Example
 ///
 /// ```rust
+/// use zila::call_every_day_async_mut;
+///
 /// let num = Rc::new(Cell::new(0));
-/// call_every_day_async({
+/// call_every_day_async_mut(move || {
 ///     let num = num.clone();
 ///     // async closures are unstable
 ///     async move || {
 ///         num.set(num.get() + 1);
 ///     }
-/// }).await;
+/// }()).await;
 /// ```
 ///
 /// *This function requires the following crate features to be activated: `day`*
@@ -321,6 +321,8 @@ where
 /// using a closure:
 ///
 /// ```rust
+/// use zila::call_every_hour;
+///
 /// call_every_hour(|| {
 ///     println!("Hi");
 /// });
@@ -329,6 +331,8 @@ where
 /// using a function:
 ///
 /// ```rust
+/// use zila::call_every_hour;
+///
 /// fn callback() {
 ///     println!("Hi");
 /// }
@@ -354,8 +358,10 @@ where
 /// # Example
 ///
 /// ```rust
+/// use zila::call_every_hour_mut;
+///
 /// let num = Rc::new(Cell::new(0));
-/// call_every_hour({
+/// call_every_hour_mut({
 ///     let num = num.clone();
 ///     move || {
 ///         num.set(num.get() + 1);
@@ -383,6 +389,8 @@ where
 /// using a closure:
 ///
 /// ```rust
+/// use zila::call_every_hour_async;
+///
 /// // async closures are unstable
 /// call_every_hour_async(async || {
 ///     println!("Hi");
@@ -392,6 +400,8 @@ where
 /// using a function:
 ///
 /// ```rust
+/// use zila::call_every_hour_async;
+///
 /// async fn callback() {
 ///     println!("Hi");
 /// }
@@ -418,14 +428,16 @@ where
 /// # Example
 ///
 /// ```rust
+/// use zila::call_every_hour_async_mut;
+///
 /// let num = Rc::new(Cell::new(0));
-/// call_every_hour_async({
+/// call_every_hour_async_mut(move || {
 ///     let num = num.clone();
 ///     // async closures are unstable
 ///     async move || {
 ///         num.set(num.get() + 1);
 ///     }
-/// }).await;
+/// }()).await;
 /// ```
 ///
 /// *This function requires the following crate features to be activated: `hour`*
@@ -449,6 +461,8 @@ where
 /// using a closure:
 ///
 /// ```rust
+/// use zila::call_every_minute;
+///
 /// call_every_minute(|| {
 ///     println!("Hi");
 /// });
@@ -457,6 +471,8 @@ where
 /// using a function:
 ///
 /// ```rust
+/// use zila::call_every_minute;
+///
 /// fn callback() {
 ///     println!("Hi");
 /// }
@@ -482,8 +498,10 @@ where
 /// # Example
 ///
 /// ```rust
+/// use zila::call_every_minute_mut;
+///
 /// let num = Rc::new(Cell::new(0));
-/// call_every_minute({
+/// call_every_minute_mut({
 ///     let num = num.clone();
 ///     move || {
 ///         num.set(num.get() + 1);
@@ -511,6 +529,8 @@ where
 /// using a closure:
 ///
 /// ```rust
+/// use zila::call_every_minute_async;
+///
 /// // async closures are unstable
 /// call_every_minute_async(async || {
 ///     println!("Hi");
@@ -520,6 +540,8 @@ where
 /// using a function:
 ///
 /// ```rust
+/// use zila::call_every_minute_async;
+///
 /// async fn callback() {
 ///     println!("Hi");
 /// }
@@ -546,14 +568,16 @@ where
 /// # Example
 ///
 /// ```rust
+/// use zila::call_every_minute_async_mut;
+///
 /// let num = Rc::new(Cell::new(0));
-/// call_every_minute_async({
+/// call_every_minute_async_mut(move || {
 ///     let num = num.clone();
 ///     // async closures are unstable
 ///     async move || {
 ///         num.set(num.get() + 1);
 ///     }
-/// }).await;
+/// }()).await;
 /// ```
 ///
 /// *This function requires the following crate features to be activated: `minute`*
@@ -577,6 +601,8 @@ where
 /// using a closure:
 ///
 /// ```rust
+/// use zila::call_every_second;
+///
 /// call_every_second(|| {
 ///     println!("Hi");
 /// });
@@ -585,6 +611,8 @@ where
 /// using a function:
 ///
 /// ```rust
+/// use zila::call_every_second;
+///
 /// fn callback() {
 ///     println!("Hi");
 /// }
@@ -610,8 +638,10 @@ where
 /// # Example
 ///
 /// ```rust
+/// use zila::call_every_second_mut;
+///
 /// let num = Rc::new(Cell::new(0));
-/// call_every_second({
+/// call_every_second_mut({
 ///     let num = num.clone();
 ///     move || {
 ///         num.set(num.get() + 1);
@@ -639,6 +669,8 @@ where
 /// using a closure:
 ///
 /// ```rust
+/// use zila::call_every_second_async;
+///
 /// // async closures are unstable
 /// call_every_second_async(async || {
 ///     println!("Hi");
@@ -648,6 +680,8 @@ where
 /// using a function:
 ///
 /// ```rust
+/// use zila::call_every_second_async;
+///
 /// async fn callback() {
 ///     println!("Hi");
 /// }
@@ -674,14 +708,16 @@ where
 /// # Example
 ///
 /// ```rust
+/// use zila::call_every_second_async_mut;
+///
 /// let num = Rc::new(Cell::new(0));
-/// call_every_second_async_mut({
+/// call_every_second_async_mut(move || {
 ///     let num = num.clone();
 ///     // async closures are unstable
 ///     async move || {
 ///         num.set(num.get() + 1);
 ///     }
-/// }).await;
+/// }()).await;
 /// ```
 ///
 /// *This function requires the following crate features to be activated: `second`*
@@ -702,22 +738,26 @@ where
 ///
 /// # Example
 ///
-/// using function:
+/// using a closure:
 ///
 /// ```rust
+/// use zila::set_timeout;
+///
+/// set_timeout(|| {
+///     println!("Hi");
+/// }, Duration::from_secs(1));
+/// ```
+///
+/// using a function:
+///
+/// ```rust
+/// use zila::set_timeout;
+///
 /// fn callback() {
 ///     println!("Hi");
 /// }
 ///
 /// set_timeout(callback, Duration::from_secs(1));
-/// ```
-///
-/// using closure:
-///
-/// ```rust
-/// set_timeout(|| {
-///     println!("Hi");
-/// }, Duration::from_secs(1));
 /// ```
 ///
 /// *This function requires the following crate features to be activated: `timeout`*
@@ -735,6 +775,8 @@ where
 /// # Example
 ///
 /// ```rust
+/// use zila::set_timeout_mut;
+///
 /// let num = Rc::new(Cell::new(0));
 /// set_timeout_mut({
 ///     let num = num.clone();
@@ -758,23 +800,27 @@ where
 ///
 /// # Example
 ///
-/// using function:
+/// using a closure:
 ///
 /// ```rust
+/// use zila::set_timeout_async;
+///
+/// // async closures are unstable
+/// set_timeout_async(async || {
+///     println!("Hi");
+/// }, Duration::from_secs(1)).await;
+/// ```
+///
+/// using a function:
+///
+/// ```rust
+/// use zila::set_timeout_async;
+///
 /// async fn callback() {
 ///     println!("Hi");
 /// }
 ///
 /// set_timeout_async(callback, Duration::from_secs(1)).await;
-/// ```
-///
-/// using closure:
-///
-/// ```rust
-/// // async closures are unstable
-/// set_timeout_async(async || {
-///     println!("Hi");
-/// }, Duration::from_secs(1)).await;
 /// ```
 ///
 /// *This function requires the following crate features to be activated: `timeout`*
@@ -793,14 +839,16 @@ where
 /// # Example
 ///
 /// ```rust
+/// use zila::set_timeout_async_mut;
+///
 /// let num = Rc::new(Cell::new(0));
-/// set_timeout_async_mut({
+/// set_timeout_async_mut(move || {
 ///     let num = num.clone();
 ///     // async closures are unstable
 ///     async move || {
 ///         num.set(num.get() + 1);
 ///     }
-/// }, Duration::from_secs(1)).await;
+/// }(), Duration::from_secs(1)).await;
 /// ```
 ///
 /// *This function requires the following crate features to be activated: `timeout`*
@@ -818,22 +866,26 @@ where
 ///
 /// # Example
 ///
-/// using function:
+/// using a closure:
 ///
 /// ```rust
+/// use zila::set_interval;
+///
+/// set_interval(|| {
+///     println!("Hi");
+/// }, Duration::from_secs(1));
+/// ```
+///
+/// using a function:
+///
+/// ```rust
+/// use zila::set_interval;
+///
 /// fn callback() {
 ///     println!("Hi");
 /// }
 ///
 /// set_interval(callback, Duration::from_secs(1));
-/// ```
-///
-/// using closure:
-///
-/// ```rust
-/// set_interval(|| {
-///     println!("Hi");
-/// }, Duration::from_secs(1));
 /// ```
 /// *This function requires the following crate features to be activated: `interval`*
 #[cfg(feature = "interval")]
@@ -852,6 +904,8 @@ where
 /// # Example
 ///
 /// ```rust
+/// use zila::set_interval_mut;
+///
 /// let num = Rc::new(Cell::new(0));
 /// set_interval_mut({
 ///     let num = num.clone();
@@ -877,23 +931,27 @@ where
 ///
 /// # Example
 ///
-/// using function:
+/// using a closure:
 ///
 /// ```rust
+/// use zila::set_interval_async;
+///
+/// // async closures are unstable
+/// set_interval_async(async || {
+///     println!("Hi");
+/// }, Duration::from_secs(1)).await;
+/// ```
+///
+/// using a function:
+///
+/// ```rust
+/// use zila::set_interval_async;
+///
 /// async fn callback() {
 ///     println!("Hi");
 /// }
 ///
 /// set_interval_async(callback, Duration::from_secs(1)).await;
-/// ```
-///
-/// using closure:
-///
-/// ```rust
-/// // async closures are unstable
-/// set_interval_async(async || {
-///     println!("Hi");
-/// }, Duration::from_secs(1)).await;
 /// ```
 /// *This function requires the following crate features to be activated: `interval`*
 #[cfg(feature = "interval")]
@@ -913,14 +971,16 @@ where
 /// # Example
 ///
 /// ```rust
+/// use zila::set_interval_async_mut;
+///
 /// let num = Rc::new(Cell::new(0));
-/// set_interval_async_mut({
+/// set_interval_async_mut(move || {
 ///     let num = num.clone();
 ///     // async closures are unstable
 ///     async move || {
 ///         num.set(num.get() + 1);
 ///     }
-/// }, Duration::from_secs(1)).await;
+/// }(), Duration::from_secs(1)).await;
 /// ```
 ///
 /// *This function requires the following crate features to be activated: `interval`*

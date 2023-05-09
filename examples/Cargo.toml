@@ -1,0 +1,123 @@
+[package]
+name = "examples"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+# If you copy one of the examples into a new project, you should be using
+# [dependencies] instead, and delete the **path**.
+[dev-dependencies]
+tokio = { version = "1.28.0", features = ["full"] }
+zila = { version = "0.1.8", path = "../", features = ["full"] }
+
+[[example]]
+name = "duration_to_next_day"
+path = "duration_to_next_day.rs"
+
+[[example]]
+name = "duration_to_next_hour"
+path = "duration_to_next_hour.rs"
+
+[[example]]
+name = "duration_to_next_minute"
+path = "duration_to_next_minute.rs"
+
+[[example]]
+name = "duration_to_next_second"
+path = "duration_to_next_second.rs"
+
+[[example]]
+name = "call_every_day"
+path = "call_every_day.rs"
+
+[[example]]
+name = "call_every_day_mut"
+path = "call_every_day_mut.rs"
+
+[[example]]
+name = "call_every_day_async"
+path = "call_every_day_async.rs"
+
+[[example]]
+name = "call_every_day_async_mut"
+path = "call_every_day_async_mut.rs"
+
+[[example]]
+name = "call_every_hour"
+path = "call_every_hour.rs"
+
+[[example]]
+name = "call_every_hour_mut"
+path = "call_every_hour_mut.rs"
+
+[[example]]
+name = "call_every_hour_async"
+path = "call_every_hour_async.rs"
+
+[[example]]
+name = "call_every_hour_async_mut"
+path = "call_every_hour_async_mut.rs"
+
+[[example]]
+name = "call_every_minute"
+path = "call_every_minute.rs"
+
+[[example]]
+name = "call_every_minute_mut"
+path = "call_every_minute_mut.rs"
+
+[[example]]
+name = "call_every_minute_async"
+path = "call_every_minute_async.rs"
+
+[[example]]
+name = "call_every_minute_async_mut"
+path = "call_every_minute_async_mut.rs"
+
+[[example]]
+name = "call_every_second"
+path = "call_every_second.rs"
+
+[[example]]
+name = "call_every_second_mut"
+path = "call_every_second_mut.rs"
+
+[[example]]
+name = "call_every_second_async"
+path = "call_every_second_async.rs"
+
+[[example]]
+name = "call_every_second_async_mut"
+path = "call_every_second_async_mut.rs"
+
+[[example]]
+name = "set_timeout"
+path = "set_timeout.rs"
+
+[[example]]
+name = "set_timeout_mut"
+path = "set_timeout_mut.rs"
+
+[[example]]
+name = "set_timeout_async"
+path = "set_timeout_async.rs"
+
+[[example]]
+name = "set_timeout_async_mut"
+path = "set_timeout_async_mut.rs"
+
+[[example]]
+name = "set_interval"
+path = "set_interval.rs"
+
+[[example]]
+name = "set_interval_mut"
+path = "set_interval_mut.rs"
+
+[[example]]
+name = "set_interval_async"
+path = "set_interval_async.rs"
+
+[[example]]
+name = "set_interval_async_mut"
+path = "set_interval_async_mut.rs"
