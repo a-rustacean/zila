@@ -112,3 +112,10 @@ This project is licensed under the [MIT license].
 Unless you explicitly state otherwise, any contribution intentionally submitted
 for inclusion in zila by you, shall be licensed as MIT, without any additional
 terms or conditions.
+
+## Support
+
+If you want to support me, you can do by downloading the
+[Hypebot][hypebot] app.
+
+[hypebot]: https://play.google.com/store/apps/details?id=org.hypebot.android
