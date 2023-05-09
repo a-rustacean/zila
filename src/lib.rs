@@ -16,7 +16,7 @@
 //! enabling the `full` feature flag:
 //!
 //! ```toml
-//! zila = { version = "0.1.5", features = ["full"] }
+//! zila = { version = "0.1.6", features = ["full"] }
 //! ```
 //!
 //! ### Authoring applications
@@ -33,7 +33,7 @@
 //! Make sure you activated the `second` featureof the zill crate on Cargo.toml
 //!
 //! ```toml
-//! zila = { version = "0.1.5", features = ["second"] }
+//! zila = { version = "0.1.6", features = ["second"] }
 //! ```
 //! on your main.rs:
 //! ```rust

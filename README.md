@@ -39,13 +39,13 @@ functions:
 * [set_timeout]
 * [set_interval]
 
-[duration]: https://docs.rs/zila/0.1.5/fn.duration_to_next_hour.html
-[every]: https://docs.rs/zila/0.1.5/fn.call_every_hour.html
-[every_mut]: https://docs.rs/zila/0.1.5/fn.call_every_hour_mut.html
-[every_async]: https://docs.rs/zila/0.1.5/fn.call_every_hour_async.html
-[every_async_mut]: https://docs.rs/zila/0.1.5/fn.call_every_hour_async_mut.html
-[set_timeout]: https://docs.rs/zila/0.1.5/fn.set_timeout.html
-[set_interval]: https://docs.rs/zila/0.1.5/fn.set_interval.html
+[duration]: https://docs.rs/zila/0.1.6/fn.duration_to_next_hour.html
+[every]: https://docs.rs/zila/0.1.6/fn.call_every_hour.html
+[every_mut]: https://docs.rs/zila/0.1.6/fn.call_every_hour_mut.html
+[every_async]: https://docs.rs/zila/0.1.6/fn.call_every_hour_async.html
+[every_async_mut]: https://docs.rs/zila/0.1.6/fn.call_every_hour_async_mut.html
+[set_timeout]: https://docs.rs/zila/0.1.6/fn.set_timeout.html
+[set_interval]: https://docs.rs/zila/0.1.6/fn.set_interval.html
 
 ## Example
 
@@ -55,7 +55,7 @@ Make sure you activated the `second` features of the zila crate on Cargo.toml:
 
 ```toml
 [dependencies]
-zila = { version = "0.1.5", features = ["second"] }
+zila = { version = "0.1.6", features = ["second"] }
 ```
 Then, on your main.rs:
 
