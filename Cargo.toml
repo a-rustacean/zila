@@ -11,7 +11,7 @@ keywords = ["event", "timeout", "interval", "everyday"]
 
 [dependencies]
 chrono = "0.4.24"
-tokio = { version = "1.28.0", features = ["time"] }
+tokio = { version = "1.38.2", features = ["time"] }
 
 [features]
 day = []
